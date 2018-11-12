@@ -1,0 +1,159 @@
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Gestión de Riesgo
+        <small> </small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-th"></i> Home</a></li>
+        <li class="active">Gestión de Riesgo</li>
+      </ol>
+    </section>
+
+ <div> 
+ <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-area-chart"></i> Realizar proyección del riesgo
+            <small class="pull-right">Fecha: <span id='date'></span></small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+
+      <div class="row invoice-info">
+      <form name='frm-1' id='frm-1' method='post' onsubmit='' action=''> 
+       
+        <!-- title row -->
+        <div class="col-sm-12 invoice-col">
+         <div class="row"> 
+          
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+                <label>Proyecto</label>
+                <select id="cboProyecto" class="js-data-example-ajax form-control">
+                  <option value="1">option</option>
+                  <option value="2">option</option>
+                  <option value="3">option</option>
+                </select>
+            </div>           
+          </div>
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+              <label>Actividad</label>
+              <select id="cboActividad" class="js-data-example-ajax form-control">
+                <option value="1">option</option>
+                <option value="2">option</option>
+                <option value="3">option</option>
+              </select>                
+            </div>
+          </div>
+
+          <div class="col-sm-12 invoice-col">
+            <div class="form-group">
+              <label>Riesgos por Actividad</label>
+              <select multiple class="form-control" id="cboRiesgo">
+                <option value="1">option</option>
+                <option value="2">option</option>
+                <option value="3">option</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-12 invoice-col">
+            <div class="box box-success table-responsive">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Hitos de Revision</th>
+                  <th>Fecha</th>
+                  <th>PV</th>
+                  <th>EVC</th>
+                  <th>EVS</th> 
+                  <th>AC</th>
+                  <th>CPI</th>
+                  <th>SPI</th>
+                  <th>BAC</th>
+                  
+                </tr>
+                </thead>
+                <tbody id="grilla" class="ajax-content">
+                
+               </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="col-sm-12 invoice-col">
+            <div class="form-group">
+              <label>Tipo de Pronostico</label>
+              <select class="form-control" id=cboPronostico>
+                <option value="1">Realizado según la proporción presupuestada</option>
+                <option value="2">Realizado segun CPI actual</option>
+                <option value="3">Realizado según ambos factores (CPI y SPI)</option>
+              </select> 
+            </div>
+          </div>
+
+          <div class="col-sm-12 invoice-col">
+            <div class="box box-success">
+              <div class="box-header with-border">
+              <h3 class="box-title">Revision de Valor Ganado</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+               
+                <div class="col-xs-6">
+                  <label for="Culminacion">Culminacion Planificada</label>
+                  <input id="fechaPlanificada" type="text" class="form-control" placeholder="" disabled>
+                </div>
+                 
+                <div class="col-xs-6">
+                  <label for="Culminacion">Variacion Costo</label>
+                  <input  id="variacionCosto" type="text" class="form-control" placeholder="" disabled>
+                </div>
+              </div>
+
+               <div class="row">        
+                <div class="col-xs-6">
+                  <label for="Culminacion">Estimacion hasta la conclusion</label>
+                  <input id="fechaPronosticada" type="text" class="form-control" placeholder="" disabled>
+                </div>
+                
+                <div class="col-xs-6">
+                    <label for="Culminacion">Variacion Cronograma</label>
+                  <input id="variacionCronograma" type="text" class="form-control" placeholder="" disabled>
+                </div>
+              </div> 
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+         <!-- /.col -->
+       </div>
+
+      </form>
+      </div>
+      
+
+ </section>
+</div>
+ <!-- /.content -->
+<script>
+  $(document).ready(function(){
+  //$(function () {
+    $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
+    $('#datepicker').datepicker({ autoclose: true, format: 'dd/mm/yyyy' });
+    //
+    frmValidate('frm-1');
+    frmReset('frm-1');
+    btnSend('btn-send','frm-1');
+    optOnClickTxt('opc_tp');
+  })
+</script>

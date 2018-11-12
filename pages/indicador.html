@@ -1,0 +1,91 @@
+﻿  <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Gestion de Requerimiento
+        <small> </small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-th"></i> Home</a></li>
+        <li class="active">Gestión de Requerimiento</li>
+      </ol>
+    </section>
+    
+    <div>
+    <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-line-chart"></i> Indicador de desempeño
+            <small class="pull-right">Fecha: <span id='date'></span></small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+
+      <form name='frm' id='frm' method='post' onsubmit='' action=''> 
+       <div class="row invoice-info">
+        <div class="col-sm-3 invoice-col">
+         <div class="form-group">
+          <label>Tipo de Rol</label>
+          <select id='opc_rol' name='opc_rol' class="form-control required" style="width: 100%;" tabindex="-1" onchange="GetInfo('opc_actv');" required>
+            <option value=''> Seleccione Rol</option>
+          </select>
+         </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-3 invoice-col">
+         <div class="form-group">
+          <label>Tipo de Actividad</label>
+          <select id='opc_actv' name='opc_actv' class="form-control required" style="width: 100%;" tabindex="-1"> 
+           <option value=''> Seleccione Actividad </option>
+          </select>
+         </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-2 invoice-col">
+         <div id='div-ind' class="form-group"> </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-3 invoice-col">
+         <div class="form-group">
+          <label>Rango de fechas</label>
+          <div class="input-group">
+           <div class="input-group-addon">  <i class="fa fa-calendar"></i> </div>
+           <input class="form-control pull-right" id="opc_date"  name="opc_date" type="text" />
+          </div>
+          <!-- /.input group -->
+         </div>   
+        </div>
+        <!-- /.col -->
+      </div>
+      </form>  
+    
+      <div class="row">
+       <div class="col-xs-12">
+        <button type="button" class="btn btn-success" id="btn-send" title="Generar"><i class="fa fa-bolt"></i> Generar </button> 
+        <button type="button" class="btn btn-default" id="btn-clear" title="Limpiar" onclick="getModule(3);"> <i class='fa fa-eraser'></i> Limpiar </button>
+       </div>
+      </div>
+      <br/>
+     <div class="row">
+      <div class="col-xs-12 invoice-col">
+       <div class="box table-responsive"> 
+        <div id='div-responsive' class="table-responsive mailbox-messages">  </div>
+       </div> 
+      </div>
+     </div>
+   </section>
+  </div>
+ <!-- /.content -->
+<script>
+  $(function () {
+    $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
+    frmValidate('frm');
+    frmReset('frm');
+    btnSend('btn-send','frm');
+    //Date range picker
+    //$('#opc_date').daterangepicker({locale: { format: 'DD/MM/YYYY' }});
+    elemDatePicker('opc_date');
+  })
+</script>

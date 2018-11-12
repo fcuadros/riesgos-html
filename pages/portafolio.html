@@ -1,0 +1,30 @@
+﻿<!-- Content Header (Page header) -->
+ <section class="content-header">
+  <h1>
+  Portafolio
+   <small> </small>
+  </h1>
+  <ol class="breadcrumb">
+   <li><a href="#"><i class="fa fa-th"></i> Home</a></li>
+   <li class="active">Portafolio</li>
+  </ol>
+ </section>
+
+ <div> 
+  <section class="invoice">
+   <!-- title row -->
+   <div class="row">
+    <div class="col-xs-12">
+     <h2 class="page-header">
+      <i class="fa fa-briefcase"></i> Portafolio <small class="pull-right">Fecha: <span id='date'></span></small>
+     </h2>
+    </div>
+   </div>      <!-- /.col -->      
+  </section>
+ </div>
+ <!-- /.content -->
+ <script>
+  $(function () {
+    $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
+  })
+ </script>

@@ -1,0 +1,124 @@
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Gestión de Riesgo
+        <small> </small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-th"></i> Home</a></li>
+        <li class="active">Gestión de Riesgo</li>
+      </ol>
+    </section>
+
+ <div> 
+ <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-pie-chart"></i> Visualizar número de riesgos por nivel
+            <small class="pull-right">Fecha: <span id='date'></span></small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+
+      <div class="row invoice-info">
+      <form name='frm-1' id='frm-1' method='post' onsubmit='' action=''> 
+       
+        <!-- title row -->
+        <div class="col-sm-12 invoice-col">
+         <div class="row"> 
+          
+          <div class="col-sm-3 invoice-col">
+            <div class="form-group">
+              <label for="exampleInputEmail">Año</label>
+              <select id="categoria" name="anio" class="form-control">
+                <option>2014</option>
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+              </select>
+            </div>           
+          </div>
+
+          <div class="col-sm-3 invoice-col">
+            <div class="form-group">
+              <label for="exampleInputEmail">Mes</label>
+              <select id="categoria" name="anio" class="form-control">
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-3 invoice-col">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Tipo de Riesgo</label>
+              <select id="tipo" name="anio" class="form-control">
+                <option value="0">Seleccionar</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-3 invoice-col">
+            <div class="form-group">
+              <label for="exampleInputEmail1">&nbsp;</label>
+              <button id="btn-calcular" type="button"  class="btn btn-success form-control"> <i class="fa fa-filter"></i> &nbsp;Filtrar</button>
+            </div>
+         </div>          
+
+        </div>
+         <!-- /.col -->
+       </div>
+
+      </form>
+      </div>
+
+       <div class="row invoice-info">
+        <div class="col-sm-12 invoice-col">
+          <div class="box box-success table-responsive">
+           <div id='div-responsive' class="table-responsive mailbox-messages">  
+            <table class="table table-hover table-striped">
+              <tr><th colspan="8"> <i class='fa fa-pie-chart'></i> Grafico de riesgos</th></tr>
+            </table>
+           </div>
+           <div>
+             <div class="box-body">
+              <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+              </div>
+           </div>
+          </div>
+        </div>
+       </div>
+
+ </section>
+</div>
+ <!-- /.content -->
+<script>
+  $(document).ready(function(){
+  //$(function () {
+    $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
+    $('#datepicker').datepicker({ autoclose: true, format: 'dd/mm/yyyy' });
+    //
+    frmValidate('frm-1');
+    frmReset('frm-1');
+    btnSend('btn-send','frm-1');
+    optOnClickTxt('opc_tp');
+
+    var visualizar = new VisualizarRiesgo();
+    visualizar.funciones();
+
+  })
+</script>

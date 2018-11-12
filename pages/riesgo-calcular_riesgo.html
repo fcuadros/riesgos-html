@@ -1,0 +1,121 @@
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Gestión de Riesgo
+        <small> </small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-th"></i> Home</a></li>
+        <li class="active">Gestión de Riesgo</li>
+      </ol>
+    </section>
+
+ <div> 
+ <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-area-chart"></i> Calcular nivel del riesgo
+            <small class="pull-right">Fecha: <span id='date'></span></small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+
+      <div class="row invoice-info">
+      <form name='frm-1' id='frm-1' method='post' onsubmit='' action=''> 
+       
+        <!-- title row -->
+        <div class="col-sm-12 invoice-col">
+         <div class="row"> 
+          
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+                <label for="exampleInputEmail">Id</label>
+                <input type="number" class="form-control" id="idRiesgo" name="idRiesgo" value="1"  readonly>
+            </div>           
+          </div>
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Probabilidad</label>
+              <input type="text" class="form-control" id="probabilidad" name="probabilidad" placeholder="Ingrese Probabilidad"required>
+            </div>
+          </div>
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+             <label for="exampleInputEmail1">Impacto</label>
+              <input type="text" class="form-control" id="impacto" name="impacto" placeholder="Ingrese Impacto" required>
+            </div>
+          </div>
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Tipo de Escala</label>
+              <select id="categoria" name="categoria" class="form-control">
+                <option>Seleccione</option>
+                <option>Tiempo</option>
+                <option>Costo</option>
+                <option>Calidad</option>
+                <option>Alcance</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-12 invoice-col">
+            <div class="form-group">
+             <label for="exampleInputEmail1">Nivel de Riesgo calculado:</label>
+             <label class="badge label-success" id="labelCualGre"></label>
+             <label class="badge bg-red" id="labelCualRed"></label>
+             <label class="badge bg-yellow" id="labelCualYellow"></label>
+            </div>
+         </div>
+
+          <div class="col-sm-12 invoice-col">
+            <div class="form-group">
+              <button id="calcular" type="button"  class="btn btn-success"> <i class="fa fa-calculator"></i> Calcular</button>
+              <button id="guardar" type="button" class="btn btn-success"> <i class="fa fa-save"></i> Guardar</button>
+            </div>
+          </div>
+
+        </div>
+         <!-- /.col -->
+       </div>
+
+      </form>
+      </div>
+
+       <div class="row invoice-info">
+        <div class="col-sm-12 invoice-col">
+          <div class="box box-success table-responsive">
+           <div id='div-responsive' class="table-responsive mailbox-messages">  
+            <table class="table table-hover table-striped">
+              <tr><th colspan="8"> <i class='fa fa-area-chart'></i> Nivel del riesgo</th></tr>
+            </table>
+           </div>
+           <div>
+             <div class="box-body">
+              <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+              </div>
+           </div>
+          </div>
+        </div>
+       </div>
+
+ </section>
+</div>
+ <!-- /.content -->
+<script>
+  $(document).ready(function(){
+  //$(function () {
+    $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
+    $('#datepicker').datepicker({ autoclose: true, format: 'dd/mm/yyyy' });
+    //
+    frmValidate('frm-1');
+    frmReset('frm-1');
+    btnSend('btn-send','frm-1');
+    optOnClickTxt('opc_tp');
+  })
+</script>

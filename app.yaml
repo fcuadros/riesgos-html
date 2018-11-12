@@ -1,0 +1,37 @@
+runtime: php55
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /
+  script: index.html
+
+- url: /index\.html
+  script: index.html
+
+- url: /bower_components
+  static_dir: bower_components
+
+- url: /dist
+  static_dir: dist
+
+- url: /json
+  static_dir: json
+
+- url: /pages
+  static_dir: pages
+
+- url: /plugins
+  static_dir: plugins
+
+- url: /plugins
+  static_dir: plugins
+
+
+
+- url: /(.*\.(gif|png|jpg))$
+  static_files: static/\1
+  upload: static/.*\.(gif|png|jpg)$
+
+- url: /.*
+  script: not_found.php

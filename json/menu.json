@@ -1,0 +1,55 @@
+{
+ "module" :[
+  {
+   "description": "Auditoria",
+   "icon" : "fa fa-legal",
+   "options": [ 
+     {
+      "description": "Opcion1",
+      "icon" : "fa fa-circle-o",
+      "options":[ {"description": "option","icon" : "fa fa-circle-o","options": ""} ] 
+     },
+     {"id":3,"description": "Opcion2","icon" : "fa fa-circle-o","options": ""},
+     {"description": "Opcion3","icon" : "fa fa-circle-o","options": ""}
+    ]
+  },
+  { 
+   "id": 4,
+   "description": "Gestión de Cambios",
+   "icon" : "fa fa-exchange",
+   "options": ""
+  },
+  { 
+   "id": 5,
+   "description": "Portafolio",
+   "icon" : "fa fa-briefcase",
+   "options": ""
+  }
+  ,
+  {
+   "description": "Gestión de Requerimiento",
+   "icon" : "fa fa-th",
+   "options": [ 
+    {
+     "description": "Atender Requerimiento",
+     "icon" : "fa fa-circle-o",
+     "options":[ {"id" : 1,"description": "Estimar requerimiento","icon" : "fa fa-circle-o","options": ""} ] 
+    },
+    {"description": "Control y monitoreo","icon" : "fa fa-circle-o","options": ""},
+    { "id": 2,"description": "Indicador de desempeño","icon" : "fa fa-circle-o","options": ""}
+   ]
+  },
+  { 
+   "id": 6,
+   "description": "Riesgo",
+   "icon" : "fa fa-fire",
+   "options": [
+      { "id": 61,"description": "Calcular nivel del riesgo","icon" : "fa fa-circle-o","options": ""},
+      { "id": 62,"description": "Realizar proyección del riesgo","icon" : "fa fa-circle-o","options": ""},
+      { "id": 63,"description": "Actualizar riesgo","icon" : "fa fa-circle-o","options": ""},
+      { "id": 64,"description": "Actualizar control","icon" : "fa fa-circle-o","options": ""},
+      { "id": 65,"description": "Visualizar riesgos por nivel","icon" : "fa fa-circle-o","options": ""}
+   ]
+  }
+ ] 
+}

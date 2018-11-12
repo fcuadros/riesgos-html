@@ -1,0 +1,184 @@
+<link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Gestión de Riesgo
+        <small> </small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-th"></i> Home</a></li>
+        <li class="active">Gestión de Riesgo</li>
+      </ol>
+    </section>
+
+ <div> 
+ <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-pencil"></i> Actualizar control
+            <small class="pull-right">Fecha: <span id='date'></span></small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+
+      <div class="row invoice-info">
+      <form name='frm-1' id='frm-1' method='post' onsubmit='' action=''> 
+       
+        <!-- title row -->
+        <div class="col-sm-12 invoice-col">
+         <div class="row">                 
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+              <label for="Nomb">Riesgo</label>
+              <select class="form-control">
+                <option>Tiempo</option>
+                <option>Costo</option>
+                <option>Calidad</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+              <label for="Identifi">Equipo responsable</label>
+              <select class="form-control">
+                <option>Tiempo</option>
+                <option>Costo</option>
+                <option>Calidad</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+              <label for="Nomb">Descripcion</label>
+              <input type="text" class="form-control" placeholder="Ingrese descripción">
+            </div>
+          </div>
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+
+              <label for="txtFechaImplementacion">Fecha de implementación</label>
+              <div class='input-group date' id='fecImplementacion'>
+                  <input id="txtFechaImplementacion" type="text" class="form-control" placeholder="Seleccionar fecha">
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>              
+              
+            </div>
+          </div>
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+              <label for="Identifi">Tipo de control</label>
+              <select class="form-control">
+                <option>Tiempo</option>
+                <option>Costo</option>
+                <option>Calidad</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+              <label for="Identifi">Costo</label>
+              <input type="text" class="form-control" placeholder="Coloque el Impacto">
+            </div>
+          </div>  
+
+          <div class="col-sm-12 invoice-col">
+            <div class="form-group">
+              <button id="guardar" type="button" class="btn btn-success"> <i class="fa fa-save"></i> Guardar</button>
+              <button id="btn-clear" type="button" class="btn btn-default"> <i class='fa fa-eraser'></i> Limpiar </button>
+            </div>
+          </div>
+
+        </div>
+         <!-- /.col -->
+       </div>
+
+      </form>
+      </div>
+
+       <div class="row invoice-info">
+        <div class="col-sm-12 invoice-col">
+          <div class="box box-success">
+           <div id='div-responsive' class="table-responsive mailbox-messages">  
+            <table class="table table-hover table-striped">
+              <tr><th colspan="8"> <i class='fa fa-bars'></i> Listado de controles</th></tr>
+            </table>
+           </div>
+           <div>
+            <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>idRiesgo</th>
+                  <th>nombre</th>
+                  <th>descripcion</th>
+                  <th>fechaRiesgo</th>
+                  <th></th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>01</td>
+                  <td>Prueba Riesg 01</td>
+                  <td>Prueba</td>
+                  <td>17/01/2018</td>
+                  
+                  <td><button id="risk1" class="btn btn-primary">Calcular</button></td>
+                </tr>
+                
+                  <th>Rendering engine</th>
+                  <th>Browser</th>
+                  <th>Platform(s)</th>
+                  <th>Engine version</th>
+                  <th>CSS grade</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+           </div>
+          </div>
+        </div>
+       </div>
+
+ </section>
+</div>
+ <!-- /.content -->
+
+  <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+  //$(function () {
+    $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
+    $('#fecImplementacion').datepicker({ autoclose: true, format: 'dd/mm/yyyy' });
+    //
+    frmValidate('frm-1');
+    frmReset('frm-1');
+    btnSend('btn-send','frm-1');
+    optOnClickTxt('opc_tp');
+
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+
+  })
+</script>

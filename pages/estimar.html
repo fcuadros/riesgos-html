@@ -1,0 +1,181 @@
+﻿<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Gestion de Requerimiento
+        <small> </small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-th"></i> Home</a></li>
+        <li class="active">Gestión de Requerimiento</li>
+      </ol>
+    </section>
+
+ <div> 
+ <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-clock-o"></i> Estimar Requerimiento
+            <small class="pull-right">Fecha: <span id='date'></span></small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+
+      <form name='frm-1' id='frm-1' method='post' onsubmit='' action=''> 
+       <div class="row invoice-info">
+        <!-- title row -->
+        <div class="col-sm-12 invoice-col">
+         <div class="row"> 
+          <div class="col-sm-4 invoice-col">
+           <label>Cliente</label>
+           <div class="input-group">
+            <span class="input-group-addon"> <input type="radio" id='opc2' name="opc_tp" value="2"> </span>
+            <input class="form-control" type="text"  id='opc2_txt' name='opc2_txt' placeholder="ingrese cliente" disabled>
+           </div>
+          </div>
+
+          <div class="col-sm-4 invoice-col">
+           <label>Proyecto</label>
+           <div class="input-group">
+            <span class="input-group-addon"> <input type="radio" id='opc1' name="opc_tp" value="1"> </span>
+            <input class="form-control" type="text" id='opc1_txt' name='opc1_txt' placeholder="ingrese proyecto" disabled>
+           </div>
+          </div>
+
+          <div class="col-sm-4 invoice-col">
+           <div class="form-group">
+            <label>Requerimiento</label>
+            <input class="form-control" type="text" id="opc_rq" name="opc_rq" placeholder="ingrese descripción" />
+           </div>
+          </div>
+         </div>
+         <div class="row">
+          <div class="col-sm-3 invoice-col">
+            <button type="button" class="btn btn-success" id="btn-send" title="Buscar"><i class="fa fa-search"></i> Buscar </button> 
+            <button type="button" class="btn btn-default" id="btn-clear" title="Limpiar" onclick="getModule(1);"> <i class='fa fa-eraser'></i> Limpiar </button>
+           </div>
+         </div>
+
+        </div>
+         <!-- /.col -->
+       </div>
+      </form>
+       <br/>
+       <hr/>
+
+       <div class="row invoice-info">
+        <div class="col-sm-6 invoice-col">
+          <div class="box table-responsive">
+           <div id='div-responsive' class="table-responsive mailbox-messages">  
+            <table class="table table-hover table-striped">
+              <tr><th colspan="8"> <i class='fa fa-list'></i> Listado de Requerimientos</th></tr>
+            </table>
+           </div>
+          </div>   
+
+        </div>
+
+        <div class="col-sm-6 invoice-col">
+         <div class="box box-success">
+          <div id="div-data" style="display: none;">
+          <div class="row invoice-info">
+           <div class="col-sm-6 invoice-col">
+            <address>
+              <div class="form-group">
+               <label class="col-xs-4">Cliente</label>
+               <label class="col-xs-8" id='lb-cs'></label>
+              </div>
+            </address>
+
+            <address>
+             <div class="form-group">
+              <label class="col-xs-4">Requerimiento</label> 
+              <label class="col-xs-8" id='lb-rq'></label>
+             </div>
+            </address>
+
+            <address> 
+             <div class="form-group">
+              <label class="col-sm-4">Estado</label>
+              <label class="col-sm-6" id='lb-st'></label>
+             </div>
+            </address>
+
+          </div>
+
+          <div class="col-sm-6 invoice-col">
+           <address>
+            <div class="form-group">
+             <label class="col-xs-4">Fec. Creación</label>
+             <label class="col-xs-6" id='lb-d1'></label>
+            </div>
+           </address>
+
+           <address>
+            <div class="form-group">
+             <label class="col-xs-4">Fec. Cierre</label>
+             <label class="col-xs-6" id='lb-d2'></label>
+            </div>
+           </address>
+          </div>
+
+          </div>
+          <br/>
+          <div class="row invoice-info">
+           <div class="col-sm-6 invoice-col">
+            <address>
+            <div class="form-group" style="margin-left: 15px;">
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input class="form-control pull-right" id="datepicker" type="text" placeholder="ingrese fecha" disabled>
+                </div>
+                <!-- /.input group -->              
+           </div>
+           </address>
+         </div>
+           <div class="col-sm-6 invoice-col"> 
+            <button type="button" class="btn btn-default pull-right" id="btn-edt" title="Editar Estimación" style="margin-right: 15px;" disabled onclick="getEstimationEdit(this.id);"><i class='fa fa-pencil-square-o'></i> Editar Estimación </button>
+            <button type="button" class="btn btn-default pull-right" id="btn-gnr" title="Generar Estimación" style="margin-right: 5px;" onclick="getEstimation(this.id);"><i class="fa fa-plus-circle"></i> Generar Estimación </button> 
+
+           </div>   
+          </div>  
+          <br/>
+        </div>
+
+          <div class="row">
+           <div class="col-sm-12">
+            <div class="table-responsive">
+            <div id='div-responsive-2' class="table-responsive mailbox-messages">  
+             <table class="table table-hover table-striped">
+              <tr><th> <i class='fa fa-tasks'></i> Actividades </th></tr>
+             </table>   
+            </div>
+           </div>
+           </div> 
+          </div>
+
+         </div> 
+        </div> 
+
+
+       </div>
+
+ </section>
+</div>
+ <!-- /.content -->
+<script>
+  $(document).ready(function(){
+  //$(function () {
+    $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
+    $('#datepicker').datepicker({ autoclose: true, format: 'dd/mm/yyyy' });
+    //
+    frmValidate('frm-1');
+    frmReset('frm-1');
+    btnSend('btn-send','frm-1');
+    optOnClickTxt('opc_tp');
+  })
+</script>
