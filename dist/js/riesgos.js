@@ -74,7 +74,7 @@ function ActualizarRiesgo(){
 
 		$.ajax({
 			method: "GET",
-			url: endPoint + "/riesgos",
+			url: endPoint + "/api/riesgos",
 		})
 		.done(function(msg) {
 
