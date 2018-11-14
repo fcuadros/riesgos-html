@@ -2,24 +2,21 @@
 
 function ActualizarRiesgo(){
 
-	table = $('#example1').DataTable(
-    		{}
+	table = $('#tabla-datos').DataTable(
+    	{
+			"drawCallback": function() {
+				actualizar.deleteRiesgo();			
+				actualizar.updateRiesgo();
+			}
+    	}
     );
 
     this.funciones = function (){
 
-    	$('#ss').click(function(){
-
-    		alertify.confirm("js","This is a confirm dialog.",
-				function(){
-					
-				},
-				function(){
-					alertify.error('Se canceló la acción');
-				})
-			.set('labels', {ok:'Si', cancel:'No'});
-
+    	$('#btn-clear').click(function(){
+				$('.form-control').val('');
     	});
+
 
         $('#btn-registrar').click(function(){
 
@@ -32,51 +29,81 @@ function ActualizarRiesgo(){
         	var _personaIdentificadora =  $('#txtIndentificador').val();
         	var _idTipoRiesgo = 1;
 
-        	var _data = { "nombre": _nombre, 
-					"descripcion": _descripcion, 
-					"tipo": _tipo,
-					"costo": _costo,
-					"probabilidad" : _probabilidad,
-					"nivelRiesgo" : _nivelRiesgo,
-					"personaIdentificadora" : _personaIdentificadora,
-					"idTipoRiesgo" : _idTipoRiesgo 
-			};
+        	var _data = { 	"nombre": _nombre, 
+							"descripcion": _descripcion, 
+							"tipo": _tipo,
+							"costo": _costo,
+							"probabilidad" : _probabilidad,
+							"nivelRiesgo" : _nivelRiesgo,
+							"personaIdentificadora" : _personaIdentificadora,
+							"idTipoRiesgo" : _idTipoRiesgo 
+						};
 
-        	$.ajax({
-				method: "POST",
-				url: endPoint + "/riesgo",
-				data: JSON.stringify(_data),
-				contentType: "application/json",
-            	dataType: "json",
-			})
-			.done(function(msg) {
 
-				if (msg.codigoRespuesta == '0') {
+        	if ($('#txtId').val().trim() == '' || $('#txtId').val().trim() == null){
 
-					alertify.alert("Indra","Se registró correctamente", function(){
-					});
+        		$.ajax({
+					method: "POST",
+					url: endPoint + "/riesgos",
+					data: JSON.stringify(_data),
+					contentType: "application/json",
+	            	dataType: "json",
+				})
+				.done(function(msg) {
 
-					actualizar.loadRiesgo();
-				}
+					if (msg.codigoRespuesta == '0') {
 
-				table.draw();		
+						alertify.alert("Indra","Se registró correctamente", function(){
+						});
 
-			});
+						$(':input').val('');
+
+						actualizar.loadRiesgo();
+					}
+				});
+
+			} else {
+
+				$.ajax({
+					method: "PUT",
+					url: endPoint + "/riesgos/" + $('#txtId').val(),
+					data: JSON.stringify(_data),
+					contentType: "application/json",
+	            	dataType: "json",
+				})
+				.done(function(msg) {
+
+					console.log(msg);
+
+					if (msg.codigoRespuesta == '0') {
+
+						alertify.alert("Indra","Se actualizó correctamente", function(){
+						});
+
+						$(':input').val('');
+
+						actualizar.loadRiesgo();
+					}
+				});
+
+			}      	
 
  		});
 
     }
 
-    this.loadRiesgo = function (){
+    this.loadRiesgo = function (){		
 
     	var _delete = '<a href="params" class="btnActionRow btnDeleteRow" title="delete"><i class="fa fa-trash-o"></i></a>';
         var _edit   = '<a href="params" class="btnActionRow btnEditRow" title="edit"><i class="fa fa-pencil"></i></a>';
 
 		$.ajax({
 			method: "GET",
-			url: endPoint + "/api/riesgos",
+			url: endPoint + "/riesgos",
 		})
 		.done(function(msg) {
+
+			table.clear().draw();
 
 			for(var item in msg) {
 
@@ -97,9 +124,6 @@ function ActualizarRiesgo(){
 
 			table.draw();
 
-			actualizar.deleteRiesgo();			
-			actualizar.updateRiesgo();			
-
 		});
 
  	}
@@ -110,40 +134,24 @@ function ActualizarRiesgo(){
 
  	 		e.preventDefault();
  	 		var _this = $(this);
+ 	 		
+ 	 		$.ajax({
+				method: "GET",
+				url: endPoint + "/riesgos/" + _this.attr('href'),
+			})
+			.done(function(msg) {
 
- 	 		var _tr = _this.parents('tr');
+				$('#txtId').val(msg.riesgoId);
+				$('#txtNombre').val(msg.nombre);
+				$('#txtDescripcion').val(msg.descripcion);
+				$('#txtTipo').val(msg.tipo);
+				$('#txtCosto').val(msg.costo);
+				$('#txtProbabilidad').val(msg.probabilidad);
+				$('#txtNivel').val(msg.nivelRiesgo);
+				$('#txtIndentificador').val(msg.personaIdentificadora);
 
- 	 		console.log(_tr);
-
-
- 	 		var _nombre = $(_this).closest('tr').find('td:eq(0)').text();
- 	 		var _nombre = $(_this).closest('tr').find('td:eq(1)').text();
- 	 		var _nombre = $(_this).closest('tr').find('td:eq(2)').text();
- 	 		var _nombre = $(_this).closest('tr').find('td:eq(3)').text();
- 	 		var _nombre = $(_this).closest('tr').find('td:eq(4)').text();
- 	 		var _nombre = $(_this).closest('tr').find('td:eq(5)').text();
- 	 		var _nombre = $(_this).closest('tr').find('td:eq(6)').text();
-
- 	 		console.log(_nombre)
-
-        	var _descripcion =  $('#txtDescripcion').val();
-        	var _tipo =  $('#txtTipo').val();
-        	var _costo =  $('#txtCosto').val();
-        	var _probabilidad =  $('#txtProbabilidad').val();
-        	var _nivelRiesgo =  $('#txtNivel').val();
-        	var _personaIdentificadora =  $('#txtIndentificador').val();
-        	var _idTipoRiesgo = 1;
-
-     //    	var _nombre = $('#txtNombre').val();
-     //    	var _descripcion =  $('#txtDescripcion').val();
-     //    	var _tipo =  $('#txtTipo').val();
-     //    	var _costo =  $('#txtCosto').val();
-     //    	var _probabilidad =  $('#txtProbabilidad').val();
-     //    	var _nivelRiesgo =  $('#txtNivel').val();
-     //    	var _personaIdentificadora =  $('#txtIndentificador').val();
-     //    	var _idTipoRiesgo = 1;
-
- 	 			 		
+				$('html, body').animate({ scrollTop: 0 }, 'fast');				
+			}); 	 			 		
 
  	 	});
 
@@ -161,16 +169,29 @@ function ActualizarRiesgo(){
 
 					$.ajax({
 						method: "DELETE",
-						url: endPoint + "/riesgo/" + _this.attr('href'),
+						url: endPoint + "/riesgos/" + _this.attr('href'),
 					})
 					.done(function(msg) {
 
 						if (msg.codigoRespuesta=='0'){
-							console.log(msg);
-							table
-					        .row(_this.parents('tr'))
-					        .remove()
-					        .draw();
+							
+							 _this.closest('tr').find('a').css('color', '#fff');
+
+							_this.closest('tr')
+                            .children()
+                            .css('background', '#ed2f5e')
+                            .css('color', '#fff')
+                            .delay(300)
+                            .slideUp(300)
+                            .queue(function() {
+                                _this.closest('tr').remove().dequeue();
+                                table
+						        .row(_this.parents('tr'))
+						        .remove()
+						        .draw();
+                            });							
+
+					        //alertify.success('Se eliminó el registro');
 						} else {
 							alertify.error('No se pudo eliminar el registro');
 						}
@@ -333,14 +354,6 @@ function VisualizarRiesgo(){
 				});
 
 			});
-
-
-
-     //    	var json = {
-					// 	"Bajo" : 2,
-					// 	"Medio": 2,
-					// 	"Alto": 1
-					// };
 
 			
  		}); 
