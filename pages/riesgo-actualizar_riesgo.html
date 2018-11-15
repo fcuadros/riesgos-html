@@ -52,19 +52,19 @@
               <label for="Nomb">Nombre</label>
               <input id='txtNombre' type="text" class="form-control" placeholder="Coloca el Nombre">
             </div>
+          </div>          
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+              <label for="Nomb">Descripcion</label>
+              <input id='txtDescripcion' type="text" class="form-control" placeholder="Coloca la descripcion">
+            </div>
           </div>
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
               <label for="Identifi">Persona que identificó</label>
               <input id='txtIndentificador' type="text" class="form-control" placeholder="Coloca el nombre del Identificador">
-            </div>
-          </div>
-
-          <div class="col-sm-6 invoice-col">
-            <div class="form-group">
-              <label for="Nomb">Descripcion</label>
-              <input id='txtDescripcion' type="text" class="form-control" placeholder="Coloca la descripcion">
             </div>
           </div>
 
@@ -94,14 +94,14 @@
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
               <label for="Identifi">Costo</label>
-              <input id='txtCosto' type="text" class="form-control" placeholder="Coloque el costo">
+              <input id='txtCosto' type="number" class="form-control" placeholder="Coloque el costo">
             </div>
           </div>
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
               <label for="Identifi">Probabilidad</label>
-              <input id='txtProbabilidad' type="text" class="form-control" placeholder="Coloca la probabilidad">
+              <input id='txtProbabilidad' type="number" min="0.1" max="1" step="0.1" class="form-control" placeholder="Coloca la probabilidad">
             </div>
           </div>     
 
@@ -161,7 +161,7 @@
 
 <script>
   $(document).ready(function(){
-  //$(function () {
+
     $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
     $('#datepicker').datepicker({ autoclose: true, format: 'dd/mm/yyyy' });
     //
@@ -170,23 +170,9 @@
     btnSend('btn-send','frm-1');
     optOnClickTxt('opc_tp');
 
-    
-
-    // $('#example2').DataTable({
-    //   'paging'      : true,
-    //   'lengthChange': false,
-    //   'searching'   : false,
-    //   'ordering'    : true,
-    //   'info'        : true,
-    //   'autoWidth'   : false
-    // })
-
-
     var actualizar = new ActualizarRiesgo();
     actualizar.funciones();
-    actualizar.loadRiesgo();
-
-    
+    actualizar.loadRiesgo();   
 
   });
 

@@ -1,12 +1,15 @@
 
 
+var _actualizar = new ActualizarRiesgo();
+
 function ActualizarRiesgo(){
 
 	table = $('#tabla-datos').DataTable(
     	{
+    		"order": [[ 6, "desc" ]],
 			"drawCallback": function() {
-				actualizar.deleteRiesgo();			
-				actualizar.updateRiesgo();
+				_actualizar.deleteRiesgo();			
+				_actualizar.updateRiesgo();
 			}
     	}
     );
@@ -58,7 +61,7 @@ function ActualizarRiesgo(){
 
 						$(':input').val('');
 
-						actualizar.loadRiesgo();
+						_actualizar.loadRiesgo();
 					}
 				});
 
@@ -82,7 +85,7 @@ function ActualizarRiesgo(){
 
 						$(':input').val('');
 
-						actualizar.loadRiesgo();
+						_actualizar.loadRiesgo();
 					}
 				});
 
@@ -444,5 +447,3 @@ function SimularRiesgo(){
     }
 
 };
-
-var actualizar = new ActualizarRiesgo();
