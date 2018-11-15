@@ -23,7 +23,7 @@ function ActualizarAlertas(){
         	var _tipo =  $('#txtOpcion').val();
         	var _costo =  $('#txtEstado').val();
 
-        	var _data = { 	"correo": _nombre, 
+        	var _data = { 	"correo": _correo, 
 							"opcion": _tipo, 
 							"estado": _costo
 						};
@@ -106,7 +106,6 @@ function ActualizarAlertas(){
 		});
 
  	}
-
 
 }
 var actualizar = new ActualizarAlertas();
