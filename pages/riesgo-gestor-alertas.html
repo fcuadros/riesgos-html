@@ -35,12 +35,12 @@
          <!--  <div class="col-sm-12 invoice-col">-->
             <div class="form-group">
               <label for="Menu">Funcionalidad</label>
-              <select class="form-control">
-                <option value="1">Calcular nivel de riesgo</option>
-                <option value="2">Realizar proyeccion del riesgo</option>
-                <option value="3">Actualizar riesgo</option>
-                <option value="4">Actualizar control</option>
-                <option value="5">Visualizar riesgos por nivel</option>
+              <select id='txtOpcion' class="form-control">
+                <option value="61">Calcular nivel de riesgo</option>
+                <option value="62">Realizar proyeccion del riesgo</option>
+                <option value="63">Actualizar riesgo</option>
+                <option value="64">Actualizar control</option>
+                <option value="65">Visualizar riesgos por nivel</option>
               </select>
             </div>           
           </div> 
@@ -50,7 +50,7 @@
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
               <label for="Nomb">Correo</label>
-              <input id='txtNombre' type="text" class="form-control" placeholder="Coloca el Nombre">
+              <input id='txtNombre' type="text" class="form-control" placeholder="Coloca el correo">
             </div>
           </div>
           
@@ -59,9 +59,9 @@
          <!--  <div class="col-sm-12 invoice-col">-->
             <div class="form-group">
               <label for="Estado"></label>
-              <select class="form-control">
+              <select id='txtEstado' class="form-control">
                 <option value="1">Activar</option>
-                <option value="2">Desactivar</option>
+                <option value="0">Desactivar</option>
               </select>
             </div>           
           </div>
@@ -136,7 +136,7 @@
           <div class="box box-success">
            <div id='div-responsive' class="table-responsive mailbox-messages">  
             <table class="table table-hover table-striped">
-              <tr><th colspan="8"> <i class='fa fa-bars'></i> Listado de riesgos</th></tr>
+              <tr><th colspan="8"> <i class='fa fa-bars'></i> Lista histórica de alertas configuradas</th></tr>
             </table>
            </div>
            <div>
@@ -144,15 +144,11 @@
               <table id="tabla-datos" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Nombre</th>
-                  <th>DescripciÃ³n</th>
-                  <th>Persona identificadora</th>
-                  <th>Probabilidad</th>
-                  <th>Nivel</th>
-                  <th>Costo</th>
-                  <th>Fecha</th>
-                  <th>Action</th>
-
+                  <th>Correos</th>
+                  <th>Funcionalidad</th>
+                  <th>Estado</th>
+                  <th>Fecha Registro</th>
+                  <th>Fecha Modificacion</th>
                 </tr>
                 </thead>
                 <tbody id="body-listado">
@@ -194,9 +190,9 @@
     // })
 
 
-    var actualizar = new ActualizarRiesgo();
+    var actualizar = new ActualizarAlertas();
     actualizar.funciones();
-    actualizar.loadRiesgo();
+    actualizar.loadAlerta();
 
     
 
