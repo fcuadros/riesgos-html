@@ -45,6 +45,9 @@ function getModule(id){
    $("#div-content").load('pages/riesgo-visualizar_riesgo_nivel.html');
    break;
   case 66:
+  $("#div-content").load('pages/riesgo-simular-viabilidad-proyecto.html');
+   break;
+  case 67:
   $("#div-content").load('pages/riesgo-gestor-alertas.html');
    break;
   default: 

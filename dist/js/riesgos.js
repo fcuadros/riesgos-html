@@ -214,14 +214,14 @@ function VisualizarRiesgo(){
 
     this.funciones = function (){
 
-		$.ajax({
-			method: "POST",
-			url: "getTipoRiesgo",
-			data: { name: "John", location: "Boston" }
-		})
-		.done(function( msg ) {
-			alert( "Data Saved: " + msg );
-		});
+		// $.ajax({
+		// 	method: "POST",
+		// 	url: "getTipoRiesgo",
+		// 	data: { name: "John", location: "Boston" }
+		// })
+		// .done(function( msg ) {
+		// 	alert( "Data Saved: " + msg );
+		// });
 
     	var revisiones = {
 		    "listaRevisiones": [
@@ -281,17 +281,25 @@ function VisualizarRiesgo(){
 			var _value = revisiones.listaRevisiones[item].codTipoRiesgo;
 			var _name = revisiones.listaRevisiones[item].nombreTipoRiesgo;
 
-			$('#tipo').append('<option value="' + _value +'">'+ _name +'</option>')
+			$('#cboTipo').append('<option value="' + _value +'">'+ _name +'</option>')
 
 		};
 
 
         $('#btn-calcular').click(function(){
 
+        	var cboAnio = $('#cboAnio').val();
+        	var cboMes = $('#cboMes').val();
+        	var cboTipo = $('#cboTipo').val();
 
+        	console.log(cboAnio);
+        	console.log(cboMes);
+        	console.log(cboTipo);
+
+        	// /obtenerNumeroRiegosPorNivel?anio=2018&mes=06&tipoRiesgo=0
         	$.ajax({
 				method: "GET",
-				url: endPoint + "/obtenerNumeroRiegosPorNivel?anio=2018&mes=06&tipoRiesgo=0",
+				url: endPoint + "/riesgos/obtenerNumeroRiegosPorNivel?anio=" + cboAnio + "&mes="+ cboMes +"&tipoRiesgo=" + cboTipo,
 			})
 			.done(function( msg ) {
 
@@ -361,5 +369,80 @@ function VisualizarRiesgo(){
 
 };
 
+function SimularRiesgo(){
+
+    this.funciones = function (){		
+
+
+        $('#btn-calcular').click(function(){
+
+        	var cantidad = $('#txtIteraciones').val();
+
+        	if (cantidad == 0 || cantidad == '') {
+
+        		alertify.alert("Indra","Debe ingresar un numero", function(){
+        			return;
+				});
+        	} else {
+
+        		$.ajax({
+					method: "POST",
+					url: endPoint + "/riesgos/simulacion/" + cantidad,
+				})
+				.done(function( msg ) {
+
+					console.log(msg)
+
+					var json = msg;
+
+					var _data = [];
+
+					for(var item in json.perdida) {
+
+						var _item = json.perdida[item];
+						_data.push(_item)
+
+					};
+
+					$('#divPromedio').show();
+
+					$('#txtDesviacion').html(msg.desvEstandar);
+					$('#txtPromedio').html(msg.promedio);
+
+					
+					var chart = new Highcharts.Chart({
+					    chart: {
+					        renderTo: 'container',
+					        type: 'column',
+					        options3d: {
+					            enabled: true,
+					            alpha: 15,
+					            beta: 15,
+					            depth: 50,
+					            viewDistance: 25
+					        }
+					    },
+					    title: {
+					        text: 'Simulación'
+					    },
+					    plotOptions: {
+					        column: {
+					            depth: 25
+					        }
+					    },
+					    series: [{
+					        data: _data
+					    }]
+					});
+
+				});
+
+        	}        	
+
+			
+ 		}); 
+    }
+
+};
 
 var actualizar = new ActualizarRiesgo();
