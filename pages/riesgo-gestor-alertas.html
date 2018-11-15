@@ -1,0 +1,205 @@
+<!-- <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"> -->
+
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Gestión de Riesgo
+        <small> </small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-th"></i> Home</a></li>
+        <li class="active">Gestión de Riesgo</li>
+      </ol>
+    </section>
+
+ <div> 
+ <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-pencil"></i> Gestor de Alertas
+            <small class="pull-right">Fecha: <span id='date'></span></small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+
+      <div class="row invoice-info">
+      <form name='frm-1' id='frm-1' method='post' onsubmit='' action=''> 
+       
+        <!-- title row -->
+        <div class="col-sm-12 invoice-col">
+         <div class="row"> 
+          
+         <!--  <div class="col-sm-12 invoice-col">-->
+            <div class="form-group">
+              <label for="Menu">Funcionalidad</label>
+              <select class="form-control">
+                <option value="1">Calcular nivel de riesgo</option>
+                <option value="2">Realizar proyeccion del riesgo</option>
+                <option value="3">Actualizar riesgo</option>
+                <option value="4">Actualizar control</option>
+                <option value="5">Visualizar riesgos por nivel</option>
+              </select>
+            </div>           
+          </div> 
+
+          <input id='txtId' type="hidden" class="form-control">
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+              <label for="Nomb">Correo</label>
+              <input id='txtNombre' type="text" class="form-control" placeholder="Coloca el Nombre">
+            </div>
+          </div>
+          
+          <div class="row"> 
+          
+         <!--  <div class="col-sm-12 invoice-col">-->
+            <div class="form-group">
+              <label for="Estado"></label>
+              <select class="form-control">
+                <option value="1">Activar</option>
+                <option value="2">Desactivar</option>
+              </select>
+            </div>           
+          </div>
+
+<!--           <div class="col-sm-6 invoice-col"> -->
+<!--             <div class="form-group"> -->
+<!--               <label for="Identifi">Persona que identificó</label> -->
+<!--               <input id='txtIndentificador' type="text" class="form-control" placeholder="Coloca el nombre del Identificador"> -->
+<!--             </div> -->
+<!--           </div> -->
+
+<!--           <div class="col-sm-6 invoice-col"> -->
+<!--             <div class="form-group"> -->
+<!--               <label for="Nomb">Descripcion</label> -->
+<!--               <input id='txtDescripcion' type="text" class="form-control" placeholder="Coloca la descripcion"> -->
+<!--             </div> -->
+<!--           </div> -->
+
+<!--           <div class="col-sm-6 invoice-col"> -->
+<!--             <div class="form-group"> -->
+<!--               <label for="Nomb">Tipo de Escala</label> -->
+<!--               <select id='txtTipo' class="form-control"> -->
+<!--                 <option value="1">Tiempo</option> -->
+<!--                 <option value="2">Costo</option> -->
+<!--                 <option value="3">Calidad</option> -->
+<!--                 <option value="4">Alcance</option> -->
+<!--               </select> -->
+<!--             </div> -->
+<!--           </div> -->
+
+<!--           <div class="col-sm-6 invoice-col"> -->
+<!--             <div class="form-group"> -->
+<!--               <label for="Nomb">Nivel del riesgo</label> -->
+<!--               <select id='txtNivel' class="form-control"> -->
+<!--                 <option value="1">Bajo</option> -->
+<!--                 <option value="2">Medio</option> -->
+<!--                 <option value="3">Alto</option> -->
+<!--               </select> -->
+<!--             </div> -->
+<!--           </div> -->
+
+<!--           <div class="col-sm-6 invoice-col"> -->
+<!--             <div class="form-group"> -->
+<!--               <label for="Identifi">Costo</label> -->
+<!--               <input id='txtCosto' type="text" class="form-control" placeholder="Coloque el costo"> -->
+<!--             </div> -->
+<!--           </div> -->
+
+<!--           <div class="col-sm-6 invoice-col"> -->
+<!--             <div class="form-group"> -->
+<!--               <label for="Identifi">Probabilidad</label> -->
+<!--               <input id='txtProbabilidad' type="text" class="form-control" placeholder="Coloca la probabilidad"> -->
+<!--             </div> -->
+<!--           </div>      -->
+
+          <div class="col-sm-12 invoice-col">
+            <div class="form-group">
+              <button id="btn-registrar" type="button" class="btn btn-success"> <i class="fa fa-save"></i> Registrar</button>
+              <button id="btn-clear" type="button" class="btn btn-default"> <i class='fa fa-eraser'></i> Limpiar </button>
+            </div>
+          </div>
+
+        </div>
+         <!-- /.col -->
+       </div>
+
+      </form>
+      </div>
+
+       <div class="row invoice-info">
+        <div class="col-sm-12 invoice-col">
+          <div class="box box-success">
+           <div id='div-responsive' class="table-responsive mailbox-messages">  
+            <table class="table table-hover table-striped">
+              <tr><th colspan="8"> <i class='fa fa-bars'></i> Listado de riesgos</th></tr>
+            </table>
+           </div>
+           <div>
+            <div class="box-body">
+              <table id="tabla-datos" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Persona identificadora</th>
+                  <th>Probabilidad</th>
+                  <th>Nivel</th>
+                  <th>Costo</th>
+                  <th>Fecha</th>
+                  <th>Action</th>
+
+                </tr>
+                </thead>
+                <tbody id="body-listado">
+                </tbody>
+              </table>
+            </div>
+           </div>
+          </div>
+        </div>
+       </div>
+
+ </section>
+</div>
+ <!-- /.content -->
+
+  <!-- <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> -->
+
+<script>
+  $(document).ready(function(){
+  //$(function () {
+    $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
+    $('#datepicker').datepicker({ autoclose: true, format: 'dd/mm/yyyy' });
+    //
+    frmValidate('frm-1');
+    frmReset('frm-1');
+    btnSend('btn-send','frm-1');
+    optOnClickTxt('opc_tp');
+
+    
+
+    // $('#example2').DataTable({
+    //   'paging'      : true,
+    //   'lengthChange': false,
+    //   'searching'   : false,
+    //   'ordering'    : true,
+    //   'info'        : true,
+    //   'autoWidth'   : false
+    // })
+
+
+    var actualizar = new ActualizarRiesgo();
+    actualizar.funciones();
+    actualizar.loadRiesgo();
+
+    
+
+  });
+
+</script>

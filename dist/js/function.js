@@ -43,7 +43,10 @@ function getModule(id){
    break; 
   case 65:
    $("#div-content").load('pages/riesgo-visualizar_riesgo_nivel.html');
-   break;           
+   break;
+  case 66:
+  $("#div-content").load('pages/riesgo-gestor-alertas.html');
+   break;
   default: 
    $("#div-content").html('');
    break;  

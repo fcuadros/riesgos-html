@@ -48,7 +48,8 @@
       { "id": 62,"description": "Realizar proyección del riesgo","icon" : "fa fa-circle-o","options": ""},
       { "id": 63,"description": "Actualizar riesgo","icon" : "fa fa-circle-o","options": ""},
       { "id": 64,"description": "Actualizar control","icon" : "fa fa-circle-o","options": ""},
-      { "id": 65,"description": "Visualizar riesgos por nivel","icon" : "fa fa-circle-o","options": ""}
+      { "id": 65,"description": "Visualizar riesgos por nivel","icon" : "fa fa-circle-o","options": ""},
+      { "id": 66,"description": "Gestor de Alertas","icon" : "fa fa-circle-o","options": ""}
    ]
   }
  ] 
