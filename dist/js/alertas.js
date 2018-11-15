@@ -109,6 +109,4 @@ function ActualizarAlertas(){
 
 
 }
-
-
 var actualizar = new ActualizarAlertas();
