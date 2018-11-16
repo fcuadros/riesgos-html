@@ -50,7 +50,8 @@
       { "id": 64,"description": "Actualizar control","icon" : "fa fa-circle-o","options": ""},
       { "id": 65,"description": "Visualizar riesgos por nivel","icon" : "fa fa-circle-o","options": ""},
       { "id": 66,"description": "Simular viabilidad de proyecto","icon" : "fa fa-circle-o","options": ""},
-      { "id": 67,"description": "Gestor de alertas","icon" : "fa fa-circle-o","options": ""}
+      { "id": 67,"description": "Gestor de alertas","icon" : "fa fa-circle-o","options": ""},
+      { "id": 68,"description": "Visualizar riesgo sin control asignado","icon" : "fa fa-circle-o","options": ""}
    ]
   }
  ] 
