@@ -1,5 +1,3 @@
-<!-- <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"> -->
-
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -139,8 +137,7 @@
                   <th>Nivel</th>
                   <th>Costo</th>
                   <th>Fecha</th>
-                  <th>Action</th>
-
+                  <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody id="body-listado">
@@ -156,19 +153,11 @@
 </div>
  <!-- /.content -->
 
-  <!-- <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-  <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> -->
-
 <script>
   $(document).ready(function(){
 
     $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
     $('#datepicker').datepicker({ autoclose: true, format: 'dd/mm/yyyy' });
-    //
-    frmValidate('frm-1');
-    frmReset('frm-1');
-    btnSend('btn-send','frm-1');
-    optOnClickTxt('opc_tp');
 
     var actualizar = new ActualizarRiesgo();
     actualizar.funciones();

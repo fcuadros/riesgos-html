@@ -50,8 +50,8 @@ function getModule(id){
   case 67:
   $("#div-content").load('pages/riesgo-gestor-alertas.html');
    break;
-    case 68:
-  $("#div-content").load('pages/Riesgo-Contar.html');
+  case 68:
+  $("#div-content").load('pages/riesgo-visualizar_riesgo_sin_control.html');
    break;
   default: 
    $("#div-content").html('');

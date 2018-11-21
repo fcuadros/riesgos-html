@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -117,34 +115,19 @@
            </div>
            <div>
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="tabla-datos" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>idRiesgo</th>
-                  <th>nombre</th>
-                  <th>descripcion</th>
-                  <th>fechaRiesgo</th>
-                  <th></th>
-
+                  <th>Descripción</th>
+                  <th>Responsable</th>
+                  <th>Costo</th>
+                  <th>Fecha de implementación</th>
+                  <th>Estado</th>                  
+                  <th>Acciones</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                  <td>01</td>
-                  <td>Prueba Riesg 01</td>
-                  <td>Prueba</td>
-                  <td>17/01/2018</td>
-                  
-                  <td><button id="risk1" class="btn btn-primary">Calcular</button></td>
-                </tr>
-                
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-                </tfoot>
+                <tbody id="body-listado">
+                </tbody>
               </table>
             </div>
            </div>
@@ -156,29 +139,15 @@
 </div>
  <!-- /.content -->
 
-  <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-  <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
 <script>
   $(document).ready(function(){
   //$(function () {
     $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
     $('#fecImplementacion').datepicker({ autoclose: true, format: 'dd/mm/yyyy' });
-    //
-    frmValidate('frm-1');
-    frmReset('frm-1');
-    btnSend('btn-send','frm-1');
-    optOnClickTxt('opc_tp');
 
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
+    var actualizar = new ActualizarControl();
+    actualizar.funciones();
+    actualizar.loadControles();
 
   })
 </script>
