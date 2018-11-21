@@ -1,5 +1,4 @@
 
-
 function ActualizarAlertas(){
 
 	table = $('#tabla-datos').DataTable(

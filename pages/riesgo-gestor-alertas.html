@@ -1,5 +1,3 @@
-<!-- <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"> -->
-
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -18,7 +16,7 @@
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-pencil"></i> Gestor de Alertas
+            <i class="fa fa-pencil"></i> Gestor de alertas
             <small class="pull-right">Fecha: <span id='date'></span></small>
           </h2>
         </div>
@@ -30,9 +28,9 @@
        
         <!-- title row -->
         <div class="col-sm-12 invoice-col">
-         <div class="row"> 
-          
-         <!--  <div class="col-sm-12 invoice-col">-->
+         <div class="row">                 
+
+          <div class="col-sm-6 invoice-col">
             <div class="form-group">
               <label for="Menu">Funcionalidad</label>
               <select id='txtOpcion' class="form-control">
@@ -42,8 +40,8 @@
                 <option value="64">Actualizar control</option>
                 <option value="65">Visualizar riesgos por nivel</option>
               </select>
-            </div>           
-          </div> 
+            </div>
+          </div>
 
           <input id='txtId' type="hidden" class="form-control">
 
@@ -53,69 +51,16 @@
               <input id='txtNombre' type="text" class="form-control" placeholder="Coloca el correo">
             </div>
           </div>
-          
-          <div class="row"> 
-          
-         <!--  <div class="col-sm-12 invoice-col">-->
+
+          <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Estado"></label>
+              <label for="Estado">Estado</label>
               <select id='txtEstado' class="form-control">
                 <option value="1">Activar</option>
                 <option value="0">Desactivar</option>
               </select>
-            </div>           
+            </div>
           </div>
-
-<!--           <div class="col-sm-6 invoice-col"> -->
-<!--             <div class="form-group"> -->
-<!--               <label for="Identifi">Persona que identificó</label> -->
-<!--               <input id='txtIndentificador' type="text" class="form-control" placeholder="Coloca el nombre del Identificador"> -->
-<!--             </div> -->
-<!--           </div> -->
-
-<!--           <div class="col-sm-6 invoice-col"> -->
-<!--             <div class="form-group"> -->
-<!--               <label for="Nomb">Descripcion</label> -->
-<!--               <input id='txtDescripcion' type="text" class="form-control" placeholder="Coloca la descripcion"> -->
-<!--             </div> -->
-<!--           </div> -->
-
-<!--           <div class="col-sm-6 invoice-col"> -->
-<!--             <div class="form-group"> -->
-<!--               <label for="Nomb">Tipo de Escala</label> -->
-<!--               <select id='txtTipo' class="form-control"> -->
-<!--                 <option value="1">Tiempo</option> -->
-<!--                 <option value="2">Costo</option> -->
-<!--                 <option value="3">Calidad</option> -->
-<!--                 <option value="4">Alcance</option> -->
-<!--               </select> -->
-<!--             </div> -->
-<!--           </div> -->
-
-<!--           <div class="col-sm-6 invoice-col"> -->
-<!--             <div class="form-group"> -->
-<!--               <label for="Nomb">Nivel del riesgo</label> -->
-<!--               <select id='txtNivel' class="form-control"> -->
-<!--                 <option value="1">Bajo</option> -->
-<!--                 <option value="2">Medio</option> -->
-<!--                 <option value="3">Alto</option> -->
-<!--               </select> -->
-<!--             </div> -->
-<!--           </div> -->
-
-<!--           <div class="col-sm-6 invoice-col"> -->
-<!--             <div class="form-group"> -->
-<!--               <label for="Identifi">Costo</label> -->
-<!--               <input id='txtCosto' type="text" class="form-control" placeholder="Coloque el costo"> -->
-<!--             </div> -->
-<!--           </div> -->
-
-<!--           <div class="col-sm-6 invoice-col"> -->
-<!--             <div class="form-group"> -->
-<!--               <label for="Identifi">Probabilidad</label> -->
-<!--               <input id='txtProbabilidad' type="text" class="form-control" placeholder="Coloca la probabilidad"> -->
-<!--             </div> -->
-<!--           </div>      -->
 
           <div class="col-sm-12 invoice-col">
             <div class="form-group">
@@ -136,7 +81,7 @@
           <div class="box box-success">
            <div id='div-responsive' class="table-responsive mailbox-messages">  
             <table class="table table-hover table-striped">
-              <tr><th colspan="8"> <i class='fa fa-bars'></i> Lista hist�rica de alertas configuradas</th></tr>
+              <tr><th colspan="8"> <i class='fa fa-bars'></i> Lista histórica de alertas configuradas</th></tr>
             </table>
            </div>
            <div>
@@ -164,38 +109,15 @@
 </div>
  <!-- /.content -->
 
-  <!-- <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-  <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> -->
-
 <script>
   $(document).ready(function(){
   //$(function () {
     $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
-    $('#datepicker').datepicker({ autoclose: true, format: 'dd/mm/yyyy' });
-    //
-    frmValidate('frm-1');
-    frmReset('frm-1');
-    btnSend('btn-send','frm-1');
-    optOnClickTxt('opc_tp');
-
-    
-
-    // $('#example2').DataTable({
-    //   'paging'      : true,
-    //   'lengthChange': false,
-    //   'searching'   : false,
-    //   'ordering'    : true,
-    //   'info'        : true,
-    //   'autoWidth'   : false
-    // })
-
+    $('#fecImplementacion').datepicker({ autoclose: true, format: 'dd/mm/yyyy' });
 
     var actualizar = new ActualizarAlertas();
     actualizar.funciones();
     actualizar.loadAlerta();
 
-    
-
-  });
-
+  })
 </script>
