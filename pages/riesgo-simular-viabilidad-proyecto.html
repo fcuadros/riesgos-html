@@ -24,7 +24,7 @@
       </div>
 
       <div class="row invoice-info">
-      <form name='frm-1' id='frm-1' method='post' onsubmit='' action=''> 
+      <form name='frm-1' id='frm-1' method='post' onsubmit='' action='' novalidate="true"> 
        
         <!-- title row -->
         <div class="col-sm-12 invoice-col">
@@ -32,7 +32,7 @@
           
           <div class="col-sm-3 invoice-col">
             <div class="form-group">
-              <label for="exampleInputEmail">Proyectos</label>
+              <label for="exampleInputEmail">Proyectos <span class="text-danger">(*)</span></label>
               <select id="cboProyectos" name="anio" class="form-control">
                 <option>Proyecto 01</option>
                 <option>Proyecto 02</option>
@@ -45,8 +45,8 @@
 
           <div class="col-sm-3 invoice-col">
             <div class="form-group">
-              <label for="exampleInputEmail">Iteraciones</label>
-              <input id='txtIteraciones' type="text" class="form-control" placeholder="Ingrese el numero de iteraciones">
+              <label for="exampleInputEmail">Iteraciones <span class="text-danger">(*)</span></label>
+              <input id='txtIteraciones' type="number" min="1" max="10000" step="1" class="form-control" placeholder="Ingrese el numero de iteraciones">
             </div>
           </div>
 
@@ -55,7 +55,13 @@
               <label for="exampleInputEmail1">&nbsp;</label>
               <button id="btn-calcular" type="button"  class="btn btn-success form-control"> <i class="fa fa-cog"></i> &nbsp;Simular</button>
             </div>
-         </div>          
+         </div>
+
+         <div class="col-sm-12 invoice-col">
+            <div class="form-group">
+              <label for=""><span class="text-danger">(*)</span> Campos obligatorios</label>
+            </div>
+          </div>      
 
         </div>
          <!-- /.col -->

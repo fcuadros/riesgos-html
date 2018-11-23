@@ -581,12 +581,7 @@ function SimularRiesgo(){
 
         	var cantidad = $('#txtIteraciones').val();
 
-        	if (cantidad == 0 || cantidad == '') {
-
-        		alertify.alert("Indra","Debe ingresar un numero", function(){
-        			return;
-				});
-        	} else {
+        	if (cantidad >= 1 && cantidad <= 10000) {
 
         		$.ajax({
 					method: "POST",
@@ -640,6 +635,11 @@ function SimularRiesgo(){
 
 				});
 
+        		
+        	} else {
+        		alertify.alert("Indra","El número de iteraciones no es válido. Valores válidos de 1 a 10000", function(){        			
+				});
+				return;
         	}        	
 
 			
