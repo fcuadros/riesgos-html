@@ -46,6 +46,12 @@ function ActualizarRiesgo(){
 
         	if ($('#txtId').val().trim() == '' || $('#txtId').val().trim() == null){
 
+        		if (_nombre=="" || _descripcion=="" || _tipo=="" || _costo=="" || _probabilidad=="" || _nivelRiesgo=="" || _personaIdentificadora=="" || _idTipoRiesgo==""){
+        			alertify.alert("Indra","Completar los campos obligatorios", function(){
+					});
+					return;
+        		}
+
         		$.ajax({
 					method: "POST",
 					url: endPoint + "/riesgos",
@@ -57,7 +63,7 @@ function ActualizarRiesgo(){
 
 					if (msg.codigoRespuesta == '0') {
 
-						alertify.alert("Indra","Se registró correctamente", function(){
+						alertify.alert("Indra","Se registró el riesgo correctamente", function(){
 						});
 
 						$(':input').val('');
@@ -81,7 +87,7 @@ function ActualizarRiesgo(){
 
 					if (msg.codigoRespuesta == '0') {
 
-						alertify.alert("Indra","Se actualizó correctamente", function(){
+						alertify.alert("Indra","Se actualizó el riesgo correctamente", function(){
 						});
 
 						$(':input').val('');

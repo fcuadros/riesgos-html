@@ -47,28 +47,28 @@
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Nomb">Nombre</label>
+              <label for="Nomb">Nombre <span class="text-danger">(*)</span></label>
               <input id='txtNombre' type="text" class="form-control" placeholder="Coloca el Nombre">
             </div>
           </div>          
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Nomb">Descripcion</label>
+              <label for="Nomb">Descripción <span class="text-danger">(*)</span></label>
               <input id='txtDescripcion' type="text" class="form-control" placeholder="Coloca la descripcion">
             </div>
           </div>
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Identifi">Persona que identificó</label>
+              <label for="Identifi">Persona que identificó <span class="text-danger">(*)</span></label>
               <input id='txtIndentificador' type="text" class="form-control" placeholder="Coloca el nombre del Identificador">
             </div>
           </div>
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Nomb">Tipo de Escala</label>
+              <label for="Nomb">Tipo de Escala <span class="text-danger">(*)</span></label>
               <select id='txtTipo' class="form-control">
                 <option value="1">Tiempo</option>
                 <option value="2">Costo</option>
@@ -80,7 +80,7 @@
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Nomb">Nivel del riesgo</label>
+              <label for="Nomb">Nivel del riesgo <span class="text-danger">(*)</span></label>
               <select id='txtNivel' class="form-control">
                 <option value="1">Bajo</option>
                 <option value="2">Medio</option>
@@ -91,17 +91,23 @@
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Identifi">Costo</label>
+              <label for="Identifi">Costo <span class="text-danger">(*)</span></label>
               <input id='txtCosto' type="number" class="form-control" placeholder="Coloque el costo">
             </div>
           </div>
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Identifi">Probabilidad</label>
+              <label for="Identifi">Probabilidad <span class="text-danger">(*)</span></label>
               <input id='txtProbabilidad' type="number" min="0.1" max="1" step="0.1" class="form-control" placeholder="Coloca la probabilidad">
             </div>
-          </div>     
+          </div>
+
+          <div class="col-sm-12 invoice-col">
+            <div class="form-group">
+              <label for=""><span class="text-danger">(*)</span> Campos obligatorios</label>
+            </div>
+          </div> 
 
           <div class="col-sm-12 invoice-col">
             <div class="form-group">
