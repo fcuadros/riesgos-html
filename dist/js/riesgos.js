@@ -241,27 +241,37 @@ function ActualizarControl(){
 
         $('#btn-registrar').click(function(){
 
-        	var _nombre = $('#txtNombre').val();
+        	var fecha = $('#txtFecha').val();
+        	var fecha = fecha.split("/");
+        	var newFecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+
+        	var _idRiesgo = $('#txtRiesgo').val();
         	var _descripcion =  $('#txtDescripcion').val();
+        	var _equipoResponsable =  $('#txtEquipo').val();
+        	var _responsable =  $('#txtResponsable').val();
+        	var _fechaImplementacion =  newFecha;
         	var _tipo =  $('#txtTipo').val();
         	var _costo =  $('#txtCosto').val();
-        	var _probabilidad =  $('#txtProbabilidad').val();
-        	var _nivelRiesgo =  $('#txtNivel').val();
-        	var _personaIdentificadora =  $('#txtIndentificador').val();
-        	var _idTipoRiesgo = 1;
+        	var _estadoImplementacion =  $('#txtEstado').val();        	
 
-        	var _data = { 	"nombre": _nombre, 
+        	var _data = { 	"idRiesgo": _idRiesgo, 
 							"descripcion": _descripcion, 
-							"tipo": _tipo,
-							"costo": _costo,
-							"probabilidad" : _probabilidad,
-							"nivelRiesgo" : _nivelRiesgo,
-							"personaIdentificadora" : _personaIdentificadora,
-							"idTipoRiesgo" : _idTipoRiesgo 
+							"equipoResponsable": _equipoResponsable,
+							"responsable": _responsable,
+							"fechaImplementacion" : _fechaImplementacion,
+							"tipo" : _tipo,
+							"costo" : _costo,
+							"estadoImplementacion" : _estadoImplementacion 
 						};
 
 
         	if ($('#txtId').val().trim() == '' || $('#txtId').val().trim() == null){
+
+        		if (_idRiesgo=="" || _descripcion=="" || _fechaImplementacion=="" || _tipo=="" || _costo=="" || _estadoImplementacion==""){
+        			alertify.alert("Indra","Completar los campos obligatorios", function(){
+					});
+					return;
+        		}
 
         		$.ajax({
 					method: "POST",
@@ -274,12 +284,12 @@ function ActualizarControl(){
 
 					if (msg.codigoRespuesta == '0') {
 
-						alertify.alert("Indra","Se registró correctamente", function(){
+						alertify.alert("Indra","Se registró el control correctamente", function(){
 						});
 
 						$(':input').val('');
 
-						_actualizarControl.loadRiesgo();
+						_actualizarControl.loadControles();
 					}
 				});
 
@@ -294,16 +304,14 @@ function ActualizarControl(){
 				})
 				.done(function(msg) {
 
-					console.log(msg);
-
 					if (msg.codigoRespuesta == '0') {
 
-						alertify.alert("Indra","Se actualizó correctamente", function(){
+						alertify.alert("Indra","Se actualizó el control correctamente", function(){
 						});
 
 						$(':input').val('');
 
-						_actualizarControl.loadRiesgo();
+						_actualizarControl.loadControles();
 					}
 				});
 
@@ -331,17 +339,50 @@ function ActualizarControl(){
 				var buttonEdit 	 = _edit.replace("params", msg[item].idControl);
 	        	var buttonDelete = _delete.replace("params", msg[item].idControl);
 
+	        	var _estado;
+	        	switch(msg[item].estadoImplementacion){
+	        		case 1:
+	        			_estado="Registrado";
+	        			break;
+	        		case 2:
+	        			_estado="En evaluación";
+	        			break;
+	        		case 3:
+	        			_estado="En proceso";
+	        			break;
+	        		case 3:
+	        			_estado="Implementado";
+	        			break;
+
+	        	}
+
 				table.row.add([	msg[item].descripcion, 
 								msg[item].responsable, 
 								msg[item].costo, 
 								msg[item].fechaImplementacion, 
-								msg[item].estadoImplementacion,								
+								_estado,								
 								'<p class="text-center">' + buttonEdit + "&nbsp;&nbsp;&nbsp;" + buttonDelete +'</p>'
 
 				]);
 			};
 
 			table.draw();
+
+		});
+
+ 	}
+
+ 	this.loadRiesgos = function (){
+
+		$.ajax({
+			method: "GET",
+			url: endPoint + "/riesgos/select",
+		})
+		.done(function(msg) {
+
+			$.each(msg, function( index, value ) {
+				$("#txtRiesgo").append('<option value="'+ value.riesgoId +'">'+ value.nombre+'</option>');
+			});
 
 		});
 
@@ -356,18 +397,25 @@ function ActualizarControl(){
  	 		
  	 		$.ajax({
 				method: "GET",
-				url: endPoint + "/riesgos/" + _this.attr('href'),
+				url: endPoint + "/controles/" + _this.attr('href'),
 			})
 			.done(function(msg) {
 
-				$('#txtId').val(msg.riesgoId);
-				$('#txtNombre').val(msg.nombre);
-				$('#txtDescripcion').val(msg.descripcion);
-				$('#txtTipo').val(msg.tipo);
-				$('#txtCosto').val(msg.costo);
-				$('#txtProbabilidad').val(msg.probabilidad);
-				$('#txtNivel').val(msg.nivelRiesgo);
-				$('#txtIndentificador').val(msg.personaIdentificadora);
+				// var newFecha = $.datepicker.formatDate('mm/dd/yy', new Date(msg.fechaImplementacion));
+				// var fecha = new Date(msg.fechaImplementacion);
+				// var newFecha = fecha.getDate() + "/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear();
+
+				$('#txtId').val(msg.idControl);
+				$('#txtRiesgo').val(msg.idRiesgo);
+	        	$('#txtDescripcion').val(msg.descripcion);
+	        	$('#txtEquipo').val(msg.equipoResponsable);
+	        	$('#txtResponsable').val(msg.responsable);
+	        	//$('#txtFecha').val(newFecha);
+	        	$('#txtTipo').val(msg.tipo);
+	        	$('#txtCosto').val(msg.costo);
+	        	$('#txtEstado').val(msg.estadoImplementacion);
+
+	        	$("#txtFechaImplementacion").datepicker("update", new Date((msg.fechaImplementacion)));
 
 				$('html, body').animate({ scrollTop: 0 }, 'fast');				
 			}); 	 			 		

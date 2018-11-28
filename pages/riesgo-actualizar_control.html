@@ -28,43 +28,44 @@
        
         <!-- title row -->
         <div class="col-sm-12 invoice-col">
-         <div class="row">                 
+         <div class="row">
+
+          <input id='txtId' type="hidden" class="form-control">              
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Nomb">Riesgo</label>
-              <select class="form-control">
-                <option>Tiempo</option>
-                <option>Costo</option>
-                <option>Calidad</option>
+              <label for="txtRiesgo">Riesgo <span class="text-danger">(*)</label>
+              <select id="txtRiesgo" class="form-control">
               </select>
             </div>
           </div>
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Identifi">Equipo responsable</label>
-              <select class="form-control">
-                <option>Tiempo</option>
-                <option>Costo</option>
-                <option>Calidad</option>
-              </select>
+              <label for="txtDescripcion">Descripción del control <span class="text-danger">(*)</label>
+              <input id="txtDescripcion" type="text" class="form-control" placeholder="Ingrese descripción">
             </div>
           </div>
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Nomb">Descripcion</label>
-              <input type="text" class="form-control" placeholder="Ingrese descripción">
+              <label for="txtEquipo">Equipo responsable</label>
+              <input id="txtEquipo" type="text" class="form-control" placeholder="Ingrese nombre de equipo">
             </div>
           </div>
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
+              <label for="txtResponsable">Persona responsable</label>
+              <input id="txtResponsable" type="text" class="form-control" placeholder="Ingrese nombre de responsable">
+            </div>
+          </div>          
 
-              <label for="txtFechaImplementacion">Fecha de implementación</label>
-              <div class='input-group date' id='fecImplementacion'>
-                  <input id="txtFechaImplementacion" type="text" class="form-control" placeholder="Seleccionar fecha">
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+              <label for="txtFecha">Fecha de implementación <span class="text-danger">(*)</label>
+              <div class='input-group date' id="txtFechaImplementacion">
+                  <input id="txtFecha" type="text" class="form-control" placeholder="Seleccionar fecha">
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                   </span>
@@ -75,25 +76,43 @@
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Identifi">Tipo de control</label>
-              <select class="form-control">
-                <option>Tiempo</option>
-                <option>Costo</option>
-                <option>Calidad</option>
+              <label  for="txtTipo">Tipo de control <span class="text-danger">(*)</label>
+              <select id="txtTipo" class="form-control">
+                <option value="1">Preventivo</option>
+                <option value="2">Detectivo</option>
+                <option value="3">Correctivo</option>
               </select>
             </div>
           </div>
 
           <div class="col-sm-6 invoice-col">
             <div class="form-group">
-              <label for="Identifi">Costo</label>
-              <input type="text" class="form-control" placeholder="Coloque el Impacto">
+              <label for="txtCosto">Costo <span class="text-danger">(*)</label>
+              <input id="txtCosto" type="number" class="form-control" placeholder="">
+            </div>
+          </div>
+
+          <div class="col-sm-6 invoice-col">
+            <div class="form-group">
+              <label for="txtEstado">Estado de la implemetación <span class="text-danger">(*)</label>
+              <select id="txtEstado" class="form-control">
+                <option value="1">Registrado</option>
+                <option value="2">En evaluación</option>
+                <option value="3">En proceso</option>
+                <option value="4">Implementado</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-12 invoice-col">
+            <div class="form-group">
+              <label for=""><span class="text-danger">(*)</span> Campos obligatorios</label>
             </div>
           </div>  
 
           <div class="col-sm-12 invoice-col">
             <div class="form-group">
-              <button id="guardar" type="button" class="btn btn-success"> <i class="fa fa-save"></i> Guardar</button>
+              <button id="btn-registrar" type="button" class="btn btn-success"> <i class="fa fa-save"></i> Guardar</button>
               <button id="btn-clear" type="button" class="btn btn-default"> <i class='fa fa-eraser'></i> Limpiar </button>
             </div>
           </div>
@@ -141,13 +160,19 @@
 
 <script>
   $(document).ready(function(){
-  //$(function () {
+
     $('#date').html($.datepicker.formatDate('dd/mm/yy', new Date()));
-    $('#fecImplementacion').datepicker({ autoclose: true, format: 'dd/mm/yyyy' });
+
+    $('#txtFechaImplementacion').datepicker({ 
+      autoclose: true, 
+      format: 'dd/mm/yyyy',
+      orientation: 'bottom'
+    });
 
     var actualizar = new ActualizarControl();
     actualizar.funciones();
     actualizar.loadControles();
+    actualizar.loadRiesgos();
 
   })
 </script>
