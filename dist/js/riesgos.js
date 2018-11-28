@@ -350,7 +350,7 @@ function ActualizarControl(){
 	        		case 3:
 	        			_estado="En proceso";
 	        			break;
-	        		case 3:
+	        		case 4:
 	        			_estado="Implementado";
 	        			break;
 
